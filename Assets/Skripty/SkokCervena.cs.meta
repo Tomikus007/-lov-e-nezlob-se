@@ -1,0 +1,63 @@
+fileFormatVersion: 2
+guid: 8c5e9d72118a69a4bb3e68efcdff7ee4
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - cfigurka1: {instanceID: 0}
+  - cfigurka2: {instanceID: 0}
+  - cfigurka3: {instanceID: 0}
+  - cfigurka4: {instanceID: 0}
+  - c1: {instanceID: 0}
+  - c2: {instanceID: 0}
+  - c3: {instanceID: 0}
+  - c4: {instanceID: 0}
+  - c5: {instanceID: 0}
+  - c6: {instanceID: 0}
+  - c7: {instanceID: 0}
+  - c8: {instanceID: 0}
+  - c9: {instanceID: 0}
+  - c10: {instanceID: 0}
+  - c11: {instanceID: 0}
+  - c12: {instanceID: 0}
+  - c13: {instanceID: 0}
+  - c14: {instanceID: 0}
+  - c15: {instanceID: 0}
+  - c16: {instanceID: 0}
+  - c17: {instanceID: 0}
+  - c18: {instanceID: 0}
+  - c19: {instanceID: 0}
+  - c20: {instanceID: 0}
+  - c21: {instanceID: 0}
+  - c22: {instanceID: 0}
+  - c23: {instanceID: 0}
+  - c24: {instanceID: 0}
+  - c25: {instanceID: 0}
+  - c26: {instanceID: 0}
+  - c27: {instanceID: 0}
+  - c28: {instanceID: 0}
+  - c29: {instanceID: 0}
+  - c30: {instanceID: 0}
+  - c31: {instanceID: 0}
+  - c32: {instanceID: 0}
+  - c33: {instanceID: 0}
+  - c34: {instanceID: 0}
+  - c35: {instanceID: 0}
+  - c36: {instanceID: 0}
+  - c37: {instanceID: 0}
+  - c38: {instanceID: 0}
+  - c39: {instanceID: 0}
+  - c40: {instanceID: 0}
+  - c41: {instanceID: 0}
+  - c42: {instanceID: 0}
+  - c43: {instanceID: 0}
+  - c1spawn: {instanceID: 0}
+  - c2spawn: {instanceID: 0}
+  - c3spawn: {instanceID: 0}
+  - c4spawn: {instanceID: 0}
+  - nasaditPanel: {fileID: 6018446832044785682, guid: c1c46237855435642895656ff0445f0c, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
