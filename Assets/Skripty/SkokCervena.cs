@@ -147,9 +147,9 @@ public class SkokCervena : MonoBehaviour
 
             if (HodKostkou.hodnotaKroku >= 1 && HodKostkou.hodnotaKroku < 43)
             {
-                for (int i = HodKostkou.cislo ++; i > 0; i --)
+                for (int i = HodKostkou.cislo; i > 0; i --)
                 {
-                    HodKostkou.hodnotaKroku = HodKostkou.hodnotaKroku ++;
+                    HodKostkou.hodnotaKroku = HodKostkou.hodnotaKroku + 1;
                     GameObject cil = Skok(skok);
                     cfigurka1.transform.position = cil.transform.position + new Vector3(0, 0.125f, 0);
                     skok = skok + 1;
