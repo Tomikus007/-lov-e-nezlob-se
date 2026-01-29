@@ -11,6 +11,11 @@ public class SkokCervena : MonoBehaviour
     int cislo;
     int skok = 1;
     int nasadit;
+    bool safe;
+    bool figurka1;
+    bool figurka2;
+    bool figurka3;
+    bool figurka4;
 
     GameObject Skok(int cislo)
     {
@@ -143,16 +148,18 @@ public class SkokCervena : MonoBehaviour
                 otazka.SetActive(true);
                 ButtonAno.SetActive(true);
                 ButtonNo.SetActive(true);
+                safe = false;
+
             }
 
-            if (HodKostkou.hodnotaKroku >= 1 && HodKostkou.hodnotaKroku < 43)
+            if (HodKostkou.hodnotaKroku >= 1 && HodKostkou.hodnotaKroku < 43 && safe == true)
             {
-                for (int i = HodKostkou.cislo ++; i > 0; i --)
+                for (int i = HodKostkou.cislo; i > 0; i --)
                 {
                     HodKostkou.hodnotaKroku = HodKostkou.hodnotaKroku ++;
+                    skok = skok ++;
                     GameObject cil = Skok(skok);
                     cfigurka1.transform.position = cil.transform.position + new Vector3(0, 0.125f, 0);
-                    skok = skok + 1;
                     await Task.Delay(100);
                 }
             }
@@ -165,21 +172,45 @@ public class SkokCervena : MonoBehaviour
 
     public async void Ano()
     {
-        await Task.Delay(50);
-        nasadit = 1;
-        otazka.SetActive(false);
-        ButtonAno.SetActive(false);
-        ButtonNo.SetActive(false);
-        cfigurka1.transform.position = Skok(1).transform.position + new Vector3(0, 0.125f, 0);
-        HodKostkou.hodnotaKroku = 1;
+        if (HodKostkou.barva == 0)
+        {
+            skok = 0;
+            nasadit = nasadit ++;
+            await Task.Delay(50);
+            otazka.SetActive(false);
+            ButtonAno.SetActive(false);
+            ButtonNo.SetActive(false);
+            cfigurka1.transform.position = Skok(1).transform.position + new Vector3(0, 0.125f, 0);
+            HodKostkou.hodnotaKroku = 1;
+            skok = 1;
+            if (nasadit == 1)
+            {
+                figurka1 = true;
+            }
+            if (nasadit == 2)
+            {
+                figurka2 = true;
+            }
+            if (nasadit == 3)
+            {
+                figurka3 = true;
+            }
+            if (nasadit == 4)
+            {
+                figurka4 = true;
+            }
+        }
     }
 
     public async void Ne()
     {
-        await Task.Delay(50);
-        nasadit = 0;
-        otazka.SetActive(false);
-        ButtonAno.SetActive(false);
-        ButtonNo.SetActive(false);
+        if (HodKostkou.barva == 0)
+        {
+            await Task.Delay(50);
+            nasadit = 0;
+            otazka.SetActive(false);
+            ButtonAno.SetActive(false);
+            ButtonNo.SetActive(false);
+        }
     }
 }
