@@ -17,6 +17,7 @@ public class HodKostkou : MonoBehaviour
     public static int barva;
     public static int pocitadlo;
     public static int hodnotaKroku;
+    public static int skok = 1;
     int cervenaHod = 0;
 
     public async void Hod()

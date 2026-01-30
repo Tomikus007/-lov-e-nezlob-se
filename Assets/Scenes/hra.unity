@@ -8375,7 +8375,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1420551373
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10913,7 +10913,7 @@ MonoBehaviour:
   c17: {fileID: 2020628826}
   c18: {fileID: 429854689}
   c19: {fileID: 1919430650}
-  c20: {fileID: 1715133543}
+  c20: {fileID: 976654055}
   c21: {fileID: 1715133543}
   c22: {fileID: 1824574575}
   c23: {fileID: 633624274}
@@ -11214,57 +11214,57 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c5e9d72118a69a4bb3e68efcdff7ee4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SkokCervena
-  cfigurka1: {fileID: 0}
-  cfigurka2: {fileID: 0}
-  cfigurka3: {fileID: 0}
-  cfigurka4: {fileID: 0}
-  c1: {fileID: 0}
-  c2: {fileID: 0}
-  c3: {fileID: 0}
-  c4: {fileID: 0}
-  c5: {fileID: 0}
-  c6: {fileID: 0}
-  c7: {fileID: 0}
-  c8: {fileID: 0}
-  c9: {fileID: 0}
-  c10: {fileID: 0}
-  c11: {fileID: 0}
-  c12: {fileID: 0}
-  c13: {fileID: 0}
-  c14: {fileID: 0}
-  c15: {fileID: 0}
-  c16: {fileID: 0}
-  c17: {fileID: 0}
-  c18: {fileID: 0}
-  c19: {fileID: 0}
-  c20: {fileID: 0}
-  c21: {fileID: 0}
-  c22: {fileID: 0}
-  c23: {fileID: 0}
-  c24: {fileID: 0}
-  c25: {fileID: 0}
-  c26: {fileID: 0}
-  c27: {fileID: 0}
-  c28: {fileID: 0}
-  c29: {fileID: 0}
-  c30: {fileID: 0}
-  c31: {fileID: 0}
-  c32: {fileID: 0}
-  c33: {fileID: 0}
-  c34: {fileID: 0}
-  c35: {fileID: 0}
-  c36: {fileID: 0}
-  c37: {fileID: 0}
-  c38: {fileID: 0}
-  c39: {fileID: 0}
-  c40: {fileID: 0}
-  c41: {fileID: 0}
+  cfigurka1: {fileID: 1050180149}
+  cfigurka2: {fileID: 516765963}
+  cfigurka3: {fileID: 1943585926}
+  cfigurka4: {fileID: 215359467}
+  c1: {fileID: 1796671888}
+  c2: {fileID: 684196799}
+  c3: {fileID: 792572594}
+  c4: {fileID: 1575206022}
+  c5: {fileID: 1454571611}
+  c6: {fileID: 1032475497}
+  c7: {fileID: 67327441}
+  c8: {fileID: 2126739930}
+  c9: {fileID: 524455380}
+  c10: {fileID: 1916336874}
+  c11: {fileID: 817613809}
+  c12: {fileID: 1419490164}
+  c13: {fileID: 1192547139}
+  c14: {fileID: 634146669}
+  c15: {fileID: 181118470}
+  c16: {fileID: 1065408030}
+  c17: {fileID: 2020628826}
+  c18: {fileID: 429854689}
+  c19: {fileID: 278269588}
+  c20: {fileID: 1919430650}
+  c21: {fileID: 976654055}
+  c22: {fileID: 1715133543}
+  c23: {fileID: 1824574575}
+  c24: {fileID: 633624274}
+  c25: {fileID: 484094703}
+  c26: {fileID: 30499891}
+  c27: {fileID: 279942750}
+  c28: {fileID: 369103090}
+  c29: {fileID: 639066166}
+  c30: {fileID: 282081271}
+  c31: {fileID: 1435998974}
+  c32: {fileID: 282081271}
+  c33: {fileID: 546491503}
+  c34: {fileID: 1534946117}
+  c35: {fileID: 453227857}
+  c36: {fileID: 726216306}
+  c37: {fileID: 1680799298}
+  c38: {fileID: 718379675}
+  c39: {fileID: 2095360408}
+  c40: {fileID: 1041118409}
+  c41: {fileID: 1213476808}
   c42: {fileID: 0}
   c43: {fileID: 0}
-  c1spawn: {fileID: 0}
-  c2spawn: {fileID: 0}
-  c3spawn: {fileID: 0}
-  c4spawn: {fileID: 0}
+  c1spawn: {fileID: 498126879}
+  c2spawn: {fileID: 1113864707}
+  c3spawn: {fileID: 1436026838}
+  c4spawn: {fileID: 1104691933}
   otazka: {fileID: 539148926}
   ButtonAno: {fileID: 1639907971}
   ButtonNo: {fileID: 680610719}

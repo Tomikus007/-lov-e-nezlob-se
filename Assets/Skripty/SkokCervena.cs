@@ -9,9 +9,8 @@ using UnityEngine.UIElements;
 public class SkokCervena : MonoBehaviour
 {
     int cislo;
-    int skok = 1;
-    int nasadit;
-    bool safe;
+    int nasadit =0;
+    bool safe = true;
     bool figurka1;
     bool figurka2;
     bool figurka3;
@@ -128,7 +127,32 @@ public class SkokCervena : MonoBehaviour
     public GameObject otazka;
     public GameObject ButtonAno;
     public GameObject ButtonNo;
+    public GameObject ButtonHodit;
 
+    public async void Ne()
+    {
+        if (HodKostkou.barva == 0)
+        {
+            await Task.Delay(50);
+            otazka.SetActive(false);
+            ButtonAno.SetActive(false);
+            ButtonNo.SetActive(false);
+            safe = false;
+
+            if (HodKostkou.cislo == 6)
+            {
+                for (int j = 6; j > 0; j--)
+                {
+                    HodKostkou.hodnotaKroku = HodKostkou.hodnotaKroku + 1;
+                    HodKostkou.skok = HodKostkou.skok + 1;
+                    GameObject cil = Skok(HodKostkou.skok);
+                    cfigurka1.transform.position = cil.transform.position + new Vector3(0, 0.125f, 0);
+                    await Task.Delay(100);
+                }
+            }
+            safe = true;
+        }
+    }
     public async void Skok()
     {
         if (HodKostkou.pocitadlo == 0)
@@ -149,24 +173,25 @@ public class SkokCervena : MonoBehaviour
                 ButtonAno.SetActive(true);
                 ButtonNo.SetActive(true);
                 safe = false;
-
             }
 
             if (HodKostkou.hodnotaKroku >= 1 && HodKostkou.hodnotaKroku < 43 && safe == true)
             {
+
                 for (int i = HodKostkou.cislo; i > 0; i --)
                 {
-                    HodKostkou.hodnotaKroku = HodKostkou.hodnotaKroku ++;
-                    skok = skok ++;
-                    GameObject cil = Skok(skok);
+                    HodKostkou.hodnotaKroku = HodKostkou.hodnotaKroku + 1;
+                    HodKostkou.skok = HodKostkou.skok + 1;
+                    GameObject cil = Skok(HodKostkou.skok);
                     cfigurka1.transform.position = cil.transform.position + new Vector3(0, 0.125f, 0);
                     await Task.Delay(100);
                 }
             }
-            if (HodKostkou.hodnotaKroku > 43)
+            if (HodKostkou.hodnotaKroku >= 43)
             {
                 cfigurka1.transform.position = Skok(43).transform.position + new Vector3(0, 0.125f, 0);
             }
+            safe = true;
         }
     }
 
@@ -174,7 +199,7 @@ public class SkokCervena : MonoBehaviour
     {
         if (HodKostkou.barva == 0)
         {
-            skok = 0;
+            HodKostkou.skok = 0;
             nasadit = nasadit ++;
             await Task.Delay(50);
             otazka.SetActive(false);
@@ -182,7 +207,8 @@ public class SkokCervena : MonoBehaviour
             ButtonNo.SetActive(false);
             cfigurka1.transform.position = Skok(1).transform.position + new Vector3(0, 0.125f, 0);
             HodKostkou.hodnotaKroku = 1;
-            skok = 1;
+            HodKostkou.skok = 1;
+            safe = true;
 
             if (nasadit == 1)
             {
@@ -199,31 +225,6 @@ public class SkokCervena : MonoBehaviour
             if (nasadit == 4)
             {
                 figurka4 = true;
-            }
-        }
-    }
-
-    public async void Ne()
-    {
-        if (HodKostkou.barva == 0)
-        {
-            await Task.Delay(50);
-            nasadit = 0;
-            otazka.SetActive(false);
-            ButtonAno.SetActive(false);
-            ButtonNo.SetActive(false);
-            skok = 1;
-
-            if(HodKostkou.cislo == 6)
-            {
-                for (int j = 6; j > 0; j--)
-                {
-                    HodKostkou.hodnotaKroku = HodKostkou.hodnotaKroku++;
-                    skok = skok++;
-                    GameObject sest = Skok(skok);
-                    cfigurka1.transform.position = sest.transform.position + new Vector3(0, 0.125f, 0);
-                    await Task.Delay(100);
-                }
             }
         }
     }
