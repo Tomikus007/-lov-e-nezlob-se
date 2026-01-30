@@ -183,6 +183,7 @@ public class SkokCervena : MonoBehaviour
             cfigurka1.transform.position = Skok(1).transform.position + new Vector3(0, 0.125f, 0);
             HodKostkou.hodnotaKroku = 1;
             skok = 1;
+
             if (nasadit == 1)
             {
                 figurka1 = true;
@@ -211,6 +212,19 @@ public class SkokCervena : MonoBehaviour
             otazka.SetActive(false);
             ButtonAno.SetActive(false);
             ButtonNo.SetActive(false);
+            skok = 1;
+
+            if(HodKostkou.cislo == 6)
+            {
+                for (int j = 6; j > 0; j--)
+                {
+                    HodKostkou.hodnotaKroku = HodKostkou.hodnotaKroku++;
+                    skok = skok++;
+                    GameObject sest = Skok(skok);
+                    cfigurka1.transform.position = sest.transform.position + new Vector3(0, 0.125f, 0);
+                    await Task.Delay(100);
+                }
+            }
         }
     }
 }
