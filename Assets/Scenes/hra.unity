@@ -1368,7 +1368,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 80b68c879e68f374185a793cfa161bc8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1050180152}
   m_SourcePrefab: {fileID: 100100000, guid: 80b68c879e68f374185a793cfa161bc8, type: 3}
 --- !u!4 &272495122 stripped
 Transform:
@@ -1950,6 +1953,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c5e9d72118a69a4bb3e68efcdff7ee4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SkokCervena
+  pozicecFigurka1: 0
+  pozicecFigutka2: 0
+  pozicecFigurka3: 0
+  pozicecFigurka4: 0
   cfigurka1: {fileID: 1050180149}
   cfigurka2: {fileID: 0}
   cfigurka3: {fileID: 0}
@@ -2004,6 +2011,7 @@ MonoBehaviour:
   otazka: {fileID: 539148926}
   ButtonAno: {fileID: 1639907971}
   ButtonNo: {fileID: 680610719}
+  ButtonHodit: {fileID: 0}
 --- !u!4 &363491594
 Transform:
   m_ObjectHideFlags: 0
@@ -6967,6 +6975,27 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 80b68c879e68f374185a793cfa161bc8, type: 3}
   m_PrefabInstance: {fileID: 272495121}
   m_PrefabAsset: {fileID: 0}
+--- !u!65 &1050180152
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1050180149}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 3.6911016, y: 3.691103, z: 6.3132668}
+  m_Center: {x: 0, y: 0.0000076293945, z: 3.1566331}
 --- !u!1 &1065408030
 GameObject:
   m_ObjectHideFlags: 0
@@ -10542,18 +10571,6 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Hod()
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1824023079}
-        m_TargetAssemblyTypeName: SkokCervena, Assembly-CSharp
-        m_MethodName: Skok
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
@@ -10890,6 +10907,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c5e9d72118a69a4bb3e68efcdff7ee4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SkokCervena
+  pozicecFigurka1: 0
+  pozicecFigutka2: 0
+  pozicecFigurka3: 0
+  pozicecFigurka4: 0
   cfigurka1: {fileID: 1050180149}
   cfigurka2: {fileID: 516765963}
   cfigurka3: {fileID: 1943585926}
@@ -10944,6 +10965,7 @@ MonoBehaviour:
   otazka: {fileID: 539148926}
   ButtonAno: {fileID: 1639907971}
   ButtonNo: {fileID: 680610719}
+  ButtonHodit: {fileID: 0}
 --- !u!4 &1824023080
 Transform:
   m_ObjectHideFlags: 0
@@ -11214,6 +11236,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c5e9d72118a69a4bb3e68efcdff7ee4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SkokCervena
+  pozicecFigurka1: 0
+  pozicecFigutka2: 0
+  pozicecFigurka3: 0
+  pozicecFigurka4: 0
   cfigurka1: {fileID: 1050180149}
   cfigurka2: {fileID: 516765963}
   cfigurka3: {fileID: 1943585926}
@@ -11268,6 +11294,7 @@ MonoBehaviour:
   otazka: {fileID: 539148926}
   ButtonAno: {fileID: 1639907971}
   ButtonNo: {fileID: 680610719}
+  ButtonHodit: {fileID: 0}
 --- !u!4 &1907465059
 Transform:
   m_ObjectHideFlags: 0

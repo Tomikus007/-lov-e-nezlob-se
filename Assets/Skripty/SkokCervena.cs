@@ -5,16 +5,22 @@ using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
+using UnityEngine.InputSystem;
 
 public class SkokCervena : MonoBehaviour
 {
     int cislo;
-    int nasadit =0;
-    bool safe = true;
+    int nasadit = 0;
+    public int pozicecFigurka1 = 0;
+    public int pozicecFigutka2 = 0;
+    public int pozicecFigurka3 = 0;
+    public int pozicecFigurka4 = 0;
+    bool safe = false;
     bool figurka1;
     bool figurka2;
     bool figurka3;
     bool figurka4;
+    bool uzJsemKlikl = false;
 
     GameObject Skok(int cislo)
     {
@@ -139,7 +145,7 @@ public class SkokCervena : MonoBehaviour
             ButtonNo.SetActive(false);
             safe = false;
 
-            if (HodKostkou.cislo == 6)
+            if (HodKostkou.cislo == 6 && HodKostkou.hodnotaKroku >= 1 && HodKostkou.hodnotaKroku < 43 && safe == true)
             {
                 for (int j = 6; j > 0; j--)
                 {
@@ -153,54 +159,12 @@ public class SkokCervena : MonoBehaviour
             safe = true;
         }
     }
-    public async void Skok()
-    {
-        if (HodKostkou.pocitadlo == 0)
-        {
-            cfigurka1.transform.position = c1spawn.transform.position + new Vector3(0, 0.125f, 0);
-            cfigurka2.transform.position = c2spawn.transform.position + new Vector3(0, 0.125f, 0);
-            cfigurka3.transform.position = c3spawn.transform.position + new Vector3(0, 0.125f, 0);
-            cfigurka4.transform.position = c4spawn.transform.position + new Vector3(0, 0.125f, 0);
-        }
-
-        if (HodKostkou.barva == 0)
-        {
-            await Task.Delay(2401);
-
-            if (HodKostkou.cislo == 6)
-            {
-                otazka.SetActive(true);
-                ButtonAno.SetActive(true);
-                ButtonNo.SetActive(true);
-                safe = false;
-            }
-
-            if (HodKostkou.hodnotaKroku >= 1 && HodKostkou.hodnotaKroku < 43 && safe == true)
-            {
-
-                for (int i = HodKostkou.cislo; i > 0; i --)
-                {
-                    HodKostkou.hodnotaKroku = HodKostkou.hodnotaKroku + 1;
-                    HodKostkou.skok = HodKostkou.skok + 1;
-                    GameObject cil = Skok(HodKostkou.skok);
-                    cfigurka1.transform.position = cil.transform.position + new Vector3(0, 0.125f, 0);
-                    await Task.Delay(100);
-                }
-            }
-            if (HodKostkou.hodnotaKroku >= 43)
-            {
-                cfigurka1.transform.position = Skok(43).transform.position + new Vector3(0, 0.125f, 0);
-            }
-            safe = true;
-        }
-    }
-
     public async void Ano()
     {
         if (HodKostkou.barva == 0)
         {
             HodKostkou.skok = 0;
-            nasadit = nasadit ++;
+            nasadit = nasadit++;
             await Task.Delay(50);
             otazka.SetActive(false);
             ButtonAno.SetActive(false);
@@ -225,6 +189,62 @@ public class SkokCervena : MonoBehaviour
             if (nasadit == 4)
             {
                 figurka4 = true;
+            }
+        }
+    }
+    public async void Hod6()
+    {
+        if (HodKostkou.barva == 0)
+        {
+            await Task.Delay(2401);
+            if (HodKostkou.cislo == 6)
+            {
+                otazka.SetActive(true);
+                ButtonAno.SetActive(true);
+                ButtonNo.SetActive(true);
+            }
+        }
+    }
+    public async void SpustPohyb(int krok)
+    {
+        if (HodKostkou.hodnotaKroku >= 1 && HodKostkou.hodnotaKroku < 43 && safe == true)
+        {
+            for (int i = HodKostkou.cislo; i > 0; i--)
+            {
+                HodKostkou.hodnotaKroku = HodKostkou.hodnotaKroku + 1;
+                HodKostkou.skok = HodKostkou.skok + 1;
+                GameObject cil = Skok(HodKostkou.skok);
+                cfigurka1.transform.position = cil.transform.position + new Vector3(0, 0.125f, 0);
+                await Task.Delay(100);
+            }
+        }
+        if (HodKostkou.hodnotaKroku >= 43)
+        {
+            cfigurka1.transform.position = Skok(43).transform.position + new Vector3(0, 0.125f, 0);
+        }
+    }
+
+    public void Update()
+    {
+        if (HodKostkou.barva == 0)
+        {
+            if (Input.GetMouseButtonDown(0) && HodKostkou.cislo > 0)
+            {
+                Ray paprsek = Camera.main.ScreenPointToRay(Input.mousePosition);
+                RaycastHit zasah;
+
+                if (Physics.Raycast(paprsek, out zasah))
+                {
+                    GameObject trefenyObjekt = c1;
+                    trefenyObjekt = zasah.collider.gameObject;
+
+                    if (trefenyObjekt == cfigurka1)
+                    {
+                        //safe = true;
+                        uzJsemKlikl = true;
+                        SpustPohyb(HodKostkou.cislo);
+                    }
+                }
             }
         }
     }
