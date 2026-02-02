@@ -10,17 +10,16 @@ using UnityEngine.InputSystem;
 public class SkokCervena : MonoBehaviour
 {
     int cislo;
-    int nasadit = 0;
+    int domecek = 0;
+    public static int nasadit = 0;
     public int pozicecFigurka1 = 0;
     public int pozicecFigutka2 = 0;
     public int pozicecFigurka3 = 0;
     public int pozicecFigurka4 = 0;
-    bool safe = false;
-    bool figurka1;
-    bool figurka2;
-    bool figurka3;
-    bool figurka4;
-    bool uzJsemKlikl = false;
+    bool figurka1 = false;
+    bool figurka2 = false;
+    bool figurka3 = false;
+    bool figurka4 = false;
 
     GameObject Skok(int cislo)
     {
@@ -69,11 +68,12 @@ public class SkokCervena : MonoBehaviour
             case 41: return c41;
             case 42: return c42;
             case 43: return c43;
+            case 44: return c44;
             case > 43: return c43;
-            case -1: return c1spawn;
-            case -2: return c2spawn;
-            case -3: return c3spawn;
-            case -4: return c4spawn;
+            //case -1: return c1spawn;
+            //case -2: return c2spawn;
+            //case -3: return c3spawn;
+            //case -4: return c4spawn;
 
             default: return null;
         }
@@ -126,6 +126,7 @@ public class SkokCervena : MonoBehaviour
     public GameObject c41;
     public GameObject c42;
     public GameObject c43;
+    public GameObject c44;
     public GameObject c1spawn;
     public GameObject c2spawn;
     public GameObject c3spawn;
@@ -137,58 +138,157 @@ public class SkokCervena : MonoBehaviour
 
     public async void Ne()
     {
+        await Task.Delay(100);
         if (HodKostkou.barva == 0)
         {
-            await Task.Delay(50);
             otazka.SetActive(false);
             ButtonAno.SetActive(false);
             ButtonNo.SetActive(false);
-            safe = false;
+        }
+    }
+    
+    public async void Ne1()
+    {
+        if (HodKostkou.barva == 0)
+        {
+            await Task.Delay(100);
 
-            if (HodKostkou.cislo == 6 && HodKostkou.hodnotaKroku >= 1 && HodKostkou.hodnotaKroku < 43 && safe == true)
+            if (HodKostkou.hodnotaKroku1c >= 1 && HodKostkou.hodnotaKroku1c < 43)
             {
                 for (int j = 6; j > 0; j--)
                 {
-                    HodKostkou.hodnotaKroku = HodKostkou.hodnotaKroku + 1;
-                    HodKostkou.skok = HodKostkou.skok + 1;
-                    GameObject cil = Skok(HodKostkou.skok);
+                    HodKostkou.hodnotaKroku1c = HodKostkou.hodnotaKroku1c + 1;
+                    HodKostkou.skok1c = HodKostkou.skok1c + 1;
+                    GameObject cil = Skok(HodKostkou.skok1c);
                     cfigurka1.transform.position = cil.transform.position + new Vector3(0, 0.125f, 0);
-                    await Task.Delay(100);
+                    await Task.Delay(150);
                 }
             }
-            safe = true;
+            if (HodKostkou.hodnotaKroku1c >= 44 - domecek && figurka1 == false)
+            {
+                cfigurka1.transform.position = Skok(44 - domecek).transform.position + new Vector3(0, 0.125f, 0);
+                figurka1 = true;
+                domecek = domecek + 1;
+            }
+        }
+    }
+    public async void Ne2()
+    {
+        if (HodKostkou.barva == 0)
+        {
+            await Task.Delay(100);
+
+            if (HodKostkou.hodnotaKroku2c >= 1 && HodKostkou.hodnotaKroku2c < 43)
+            {
+                for (int j = 6; j > 0; j--)
+                {
+                    HodKostkou.hodnotaKroku2c = HodKostkou.hodnotaKroku2c + 1;
+                    HodKostkou.skok2c = HodKostkou.skok2c + 1;
+                    GameObject cil = Skok(HodKostkou.skok2c);
+                    cfigurka2.transform.position = cil.transform.position + new Vector3(0, 0.125f, 0);
+                    await Task.Delay(150);
+                }
+            }
+            if (HodKostkou.hodnotaKroku2c >= 44 - domecek && figurka2 == false)
+            {
+                cfigurka2.transform.position = Skok(44 - domecek).transform.position + new Vector3(0, 0.125f, 0);
+                figurka2 = true;
+                domecek = domecek + 1;
+            }
+        }
+    }
+    public async void Ne3()
+    {
+        if (HodKostkou.barva == 0)
+        {
+            await Task.Delay(100);
+
+            if (HodKostkou.hodnotaKroku3c >= 1 && HodKostkou.hodnotaKroku3c < 43)
+            {
+                for (int j = 6; j > 0; j--)
+                {
+                    HodKostkou.hodnotaKroku3c = HodKostkou.hodnotaKroku3c + 1;
+                    HodKostkou.skok3c = HodKostkou.skok3c + 1;
+                    GameObject cil = Skok(HodKostkou.skok3c);
+                    cfigurka3.transform.position = cil.transform.position + new Vector3(0, 0.125f, 0);
+                    await Task.Delay(150);
+                }
+            }
+            if (HodKostkou.hodnotaKroku3c >= 44 - domecek && figurka3 == false)
+            {
+                cfigurka3.transform.position = Skok(44 - domecek).transform.position + new Vector3(0, 0.125f, 0);
+                figurka3 = true;
+                domecek = domecek + 1;
+            }
+        }
+    }
+    public async void Ne4()
+    {
+        if (HodKostkou.barva == 0)
+        {
+            await Task.Delay(100);
+
+            if (HodKostkou.hodnotaKroku4c >= 1 && HodKostkou.hodnotaKroku4c < 43)
+            {
+                for (int j = 6; j > 0; j--)
+                {
+                    HodKostkou.hodnotaKroku4c = HodKostkou.hodnotaKroku4c + 1;
+                    HodKostkou.skok4c = HodKostkou.skok4c + 1;
+                    GameObject cil = Skok(HodKostkou.skok4c);
+                    cfigurka1.transform.position = cil.transform.position + new Vector3(0, 0.125f, 0);
+                    await Task.Delay(150);
+                }
+            }
+            if (HodKostkou.hodnotaKroku2c >= 44 - domecek && figurka2 == false)
+            {
+                cfigurka2.transform.position = Skok(44 - domecek).transform.position + new Vector3(0, 0.125f, 0);
+                figurka2 = true;
+                domecek = domecek + 1;
+            }
         }
     }
     public async void Ano()
     {
         if (HodKostkou.barva == 0)
         {
-            HodKostkou.skok = 0;
-            nasadit = nasadit++;
-            await Task.Delay(50);
+            HodKostkou.safe = false;
+            nasadit = nasadit + 1;
+            await Task.Delay(100);
             otazka.SetActive(false);
             ButtonAno.SetActive(false);
             ButtonNo.SetActive(false);
-            cfigurka1.transform.position = Skok(1).transform.position + new Vector3(0, 0.125f, 0);
-            HodKostkou.hodnotaKroku = 1;
-            HodKostkou.skok = 1;
-            safe = true;
 
             if (nasadit == 1)
             {
-                figurka1 = true;
+                HodKostkou.hodnotaKroku1c = 1;
+                HodKostkou.skok1c = 1;
+                cfigurka1.transform.position = Skok(1).transform.position + new Vector3(0, 0.125f, 0);
+                ButtonHodit.SetActive(true);
+
             }
             if (nasadit == 2)
             {
                 figurka2 = true;
+                HodKostkou.hodnotaKroku2c = 1;
+                HodKostkou.skok2c = 1;
+                cfigurka2.transform.position = Skok(1).transform.position + new Vector3(0, 0.125f, 0);
+                ButtonHodit.SetActive(true);
             }
             if (nasadit == 3)
             {
                 figurka3 = true;
+                HodKostkou.hodnotaKroku3c = 1;
+                HodKostkou.skok3c = 1;
+                cfigurka3.transform.position = Skok(1).transform.position + new Vector3(0, 0.125f, 0);
+                ButtonHodit.SetActive(true);
             }
             if (nasadit == 4)
             {
                 figurka4 = true;
+                HodKostkou.hodnotaKroku4c = 1;
+                HodKostkou.skok4c = 1;
+                cfigurka4.transform.position = Skok(1).transform.position + new Vector3(0, 0.125f, 0);
+                ButtonHodit.SetActive(true);
             }
         }
     }
@@ -196,6 +296,7 @@ public class SkokCervena : MonoBehaviour
     {
         if (HodKostkou.barva == 0)
         {
+            HodKostkou.safe = false;
             await Task.Delay(2401);
             if (HodKostkou.cislo == 6)
             {
@@ -203,24 +304,87 @@ public class SkokCervena : MonoBehaviour
                 ButtonAno.SetActive(true);
                 ButtonNo.SetActive(true);
             }
+            HodKostkou.safe = true;
         }
     }
-    public async void SpustPohyb(int krok)
+    public async void SpustPohyb1(int krok)
     {
-        if (HodKostkou.hodnotaKroku >= 1 && HodKostkou.hodnotaKroku < 43 && safe == true)
+        if (HodKostkou.hodnotaKroku1c >= 1 && HodKostkou.hodnotaKroku1c < 43)
         {
             for (int i = HodKostkou.cislo; i > 0; i--)
             {
-                HodKostkou.hodnotaKroku = HodKostkou.hodnotaKroku + 1;
-                HodKostkou.skok = HodKostkou.skok + 1;
-                GameObject cil = Skok(HodKostkou.skok);
+                HodKostkou.hodnotaKroku1c = HodKostkou.hodnotaKroku1c + 1;
+                HodKostkou.skok1c = HodKostkou.skok1c + 1;
+                GameObject cil = Skok(HodKostkou.skok1c);
                 cfigurka1.transform.position = cil.transform.position + new Vector3(0, 0.125f, 0);
-                await Task.Delay(100);
+                await Task.Delay(150);
             }
         }
-        if (HodKostkou.hodnotaKroku >= 43)
+        if (HodKostkou.hodnotaKroku1c >= 44 - domecek && figurka1 == false)
         {
-            cfigurka1.transform.position = Skok(43).transform.position + new Vector3(0, 0.125f, 0);
+            cfigurka1.transform.position = Skok(44).transform.position + new Vector3(0, 0.125f, 0);
+            figurka1 = true;
+            domecek = domecek + 1;
+        }
+    }
+    public async void SpustPohyb2(int krok)
+    {
+        if (HodKostkou.hodnotaKroku2c >= 1 && HodKostkou.hodnotaKroku2c < 43)
+        {
+            for (int i = HodKostkou.cislo; i > 0; i--)
+            {
+                HodKostkou.hodnotaKroku1c = HodKostkou.hodnotaKroku2c + 1;
+                HodKostkou.skok2c = HodKostkou.skok2c + 1;
+                GameObject cil = Skok(HodKostkou.skok2c);
+                cfigurka2.transform.position = cil.transform.position + new Vector3(0, 0.125f, 0);
+                await Task.Delay(150);
+            }
+        }
+        if (HodKostkou.hodnotaKroku2c >= 44 - domecek && figurka2 == false)
+        {
+            cfigurka2.transform.position = Skok(44 - domecek).transform.position + new Vector3(0, 0.125f, 0);
+            figurka2 = true;
+            domecek = domecek + 1;
+        }
+    }
+    public async void SpustPohyb3(int krok)
+    {
+        if (HodKostkou.hodnotaKroku3c >= 1 && HodKostkou.hodnotaKroku3c < 43)
+        {
+            for (int i = HodKostkou.cislo; i > 0; i--)
+            {
+                HodKostkou.hodnotaKroku3c = HodKostkou.hodnotaKroku3c + 1;
+                HodKostkou.skok3c = HodKostkou.skok3c + 1;
+                GameObject cil = Skok(HodKostkou.skok3c);
+                cfigurka3.transform.position = cil.transform.position + new Vector3(0, 0.125f, 0);
+                await Task.Delay(150);
+            }
+        }
+        if (HodKostkou.hodnotaKroku3c >= 44 - domecek && figurka3 == false)
+        {
+            cfigurka3.transform.position = Skok(44 - domecek).transform.position + new Vector3(0, 0.125f, 0);
+            figurka3  = true;
+            domecek = domecek + 1;
+        }
+    }
+    public async void SpustPohyb4(int krok)
+    {
+        if (HodKostkou.hodnotaKroku3c >= 1 && HodKostkou.hodnotaKroku3c < 43)
+        {
+            for (int i = HodKostkou.cislo; i > 0; i--)
+            {
+                HodKostkou.hodnotaKroku3c = HodKostkou.hodnotaKroku3c + 1;
+                HodKostkou.skok3c = HodKostkou.skok3c + 1;
+                GameObject cil = Skok(HodKostkou.skok3c);
+                cfigurka4.transform.position = cil.transform.position + new Vector3(0, 0.125f, 0);
+                await Task.Delay(150);
+            }
+        }
+        if (HodKostkou.hodnotaKroku3c >= 44 - domecek && figurka4 == false)
+        {
+            cfigurka4.transform.position = Skok(44).transform.position + new Vector3(0, 0.125f, 0);
+            figurka4 = true;
+            domecek = domecek + 1;
         }
     }
 
@@ -238,11 +402,61 @@ public class SkokCervena : MonoBehaviour
                     GameObject trefenyObjekt = c1;
                     trefenyObjekt = zasah.collider.gameObject;
 
-                    if (trefenyObjekt == cfigurka1)
+                    if (trefenyObjekt == cfigurka1 && HodKostkou.safe == true)
                     {
-                        //safe = true;
-                        uzJsemKlikl = true;
-                        SpustPohyb(HodKostkou.cislo);
+                        ButtonHodit.SetActive(true);
+                        if (HodKostkou.cislo != 6)
+                        {
+                            SpustPohyb1(HodKostkou.cislo);
+                            HodKostkou.safe = false;
+                        }
+                        if (HodKostkou.cislo == 6)
+                        {
+                            Ne1();
+                            HodKostkou.safe = false;
+                        }
+                    }
+                    if (trefenyObjekt == cfigurka2 && HodKostkou.safe == true)
+                    {
+                        ButtonHodit.SetActive(true);
+                        if (HodKostkou.cislo != 6)
+                        {
+                            SpustPohyb2(HodKostkou.cislo);
+                            HodKostkou.safe = false;
+                        }
+                        if (HodKostkou.cislo == 6)
+                        {
+                            Ne2();
+                            HodKostkou.safe = false;
+                        }
+                    }
+                    if (trefenyObjekt == cfigurka3 && HodKostkou.safe == true)
+                    {
+                        ButtonHodit.SetActive(true);
+                        if (HodKostkou.cislo != 6)
+                        {
+                            SpustPohyb3(HodKostkou.cislo);
+                            HodKostkou.safe = false;
+                        }
+                        if (HodKostkou.cislo == 6)
+                        {
+                            Ne3();
+                            HodKostkou.safe = false;
+                        }
+                    }
+                    if (trefenyObjekt == cfigurka4 && HodKostkou.safe == true)
+                    {
+                        ButtonHodit.SetActive(true);
+                        if (HodKostkou.cislo != 6)
+                        {
+                            SpustPohyb4(HodKostkou.cislo);
+                            HodKostkou.safe = false;
+                        }
+                        if (HodKostkou.cislo == 6)
+                        {
+                            Ne4();
+                            HodKostkou.safe = false;
+                        }
                     }
                 }
             }

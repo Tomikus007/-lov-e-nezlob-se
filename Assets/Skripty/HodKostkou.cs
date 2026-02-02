@@ -16,8 +16,15 @@ public class HodKostkou : MonoBehaviour
     public static int cislo = 0;
     public static int barva;
     public static int pocitadlo;
-    public static int hodnotaKroku;
-    public static int skok = 1;
+    public static int hodnotaKroku1c;
+    public static int hodnotaKroku2c;
+    public static int hodnotaKroku3c;
+    public static int hodnotaKroku4c;
+    public static int skok1c = 1;
+    public static int skok2c = 1;
+    public static int skok3c = 1;
+    public static int skok4c = 1;
+    public static bool safe = false;
     int cervenaHod = 0;
 
     public async void Hod()
@@ -115,10 +122,15 @@ public class HodKostkou : MonoBehaviour
                 await Task.Delay(200);
             }
 
+            if (SkokCervena.nasadit == 0)
+            {
+                ButtonHodit.SetActive(true);
+            }
+
             cervenaHod = cislo;
             barva = 0;
-            ButtonHodit.SetActive(true);
             pocitadlo = pocitadlo + 1;
+            safe = true;
         }
     }
 }
