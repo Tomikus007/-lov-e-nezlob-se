@@ -9,8 +9,8 @@ using UnityEngine.InputSystem;
 
 public class SkokCervena : MonoBehaviour
 {
-    //když hodim 6 tak se pohnu a taky muzu nasadit, pøerollování kostky
     int cislo;
+    int domecek = 0;
     public static int nasadit = 0;
     public int pozicecFigurka1 = 0;
     public int pozicecFigutka2 = 0;
@@ -69,7 +69,12 @@ public class SkokCervena : MonoBehaviour
             case 42: return c42;
             case 43: return c43;
             case 44: return c44;
-            case > 43: return c44;
+            case > 43: return c43;
+            //case -1: return c1spawn;
+            //case -2: return c2spawn;
+            //case -3: return c3spawn;
+            //case -4: return c4spawn;
+
             default: return null;
         }
     }
@@ -139,7 +144,6 @@ public class SkokCervena : MonoBehaviour
             otazka.SetActive(false);
             ButtonAno.SetActive(false);
             ButtonNo.SetActive(false);
-            HodKostkou.safe = true;
         }
     }
     
@@ -149,7 +153,7 @@ public class SkokCervena : MonoBehaviour
         {
             await Task.Delay(100);
 
-            if (HodKostkou.hodnotaKroku1c >= 1 && HodKostkou.hodnotaKroku1c < 44 && HodKostkou.domecek1 == false)
+            if (HodKostkou.hodnotaKroku1c >= 1 && HodKostkou.hodnotaKroku1c < 43)
             {
                 for (int j = 6; j > 0; j--)
                 {
@@ -159,13 +163,12 @@ public class SkokCervena : MonoBehaviour
                     cfigurka1.transform.position = cil.transform.position + new Vector3(0, 0.125f, 0);
                     await Task.Delay(150);
                 }
-                if (HodKostkou.hodnotaKroku1c >= 44 - HodKostkou.domecek && figurka1 == false && HodKostkou.domecek1 == false)
-                {
-                    cfigurka1.transform.position = Skok(44 - HodKostkou.domecek).transform.position + new Vector3(0, 0.125f, 0);
-                    figurka1 = true;
-                    HodKostkou.domecek1 = true;
-                    HodKostkou.domecek = HodKostkou.domecek + 1;
-                }
+            }
+            if (HodKostkou.hodnotaKroku1c >= 44 - domecek && figurka1 == false)
+            {
+                cfigurka1.transform.position = Skok(44 - domecek).transform.position + new Vector3(0, 0.125f, 0);
+                figurka1 = true;
+                domecek = domecek + 1;
             }
         }
     }
@@ -175,7 +178,7 @@ public class SkokCervena : MonoBehaviour
         {
             await Task.Delay(100);
 
-            if (HodKostkou.hodnotaKroku2c >= 1 && HodKostkou.hodnotaKroku2c < 44 && HodKostkou.domecek2 == false)
+            if (HodKostkou.hodnotaKroku2c >= 1 && HodKostkou.hodnotaKroku2c < 43)
             {
                 for (int j = 6; j > 0; j--)
                 {
@@ -185,14 +188,12 @@ public class SkokCervena : MonoBehaviour
                     cfigurka2.transform.position = cil.transform.position + new Vector3(0, 0.125f, 0);
                     await Task.Delay(150);
                 }
-                HodKostkou.safe = false;
-                if (HodKostkou.hodnotaKroku3c >= 44 - HodKostkou.domecek && figurka2 == false && HodKostkou.domecek2 == false)
-                {
-                    cfigurka2.transform.position = Skok(44 - HodKostkou.domecek).transform.position + new Vector3(0, 0.125f, 0);
-                    figurka2 = true;
-                    HodKostkou.domecek3 = true;
-                    HodKostkou.domecek = HodKostkou.domecek + 1;
-                }
+            }
+            if (HodKostkou.hodnotaKroku2c >= 44 - domecek && figurka2 == false)
+            {
+                cfigurka2.transform.position = Skok(44 - domecek).transform.position + new Vector3(0, 0.125f, 0);
+                figurka2 = true;
+                domecek = domecek + 1;
             }
         }
     }
@@ -202,7 +203,7 @@ public class SkokCervena : MonoBehaviour
         {
             await Task.Delay(100);
 
-            if (HodKostkou.hodnotaKroku3c >= 1 && HodKostkou.hodnotaKroku3c < 44 && HodKostkou.domecek3 == false)
+            if (HodKostkou.hodnotaKroku3c >= 1 && HodKostkou.hodnotaKroku3c < 43)
             {
                 for (int j = 6; j > 0; j--)
                 {
@@ -212,13 +213,12 @@ public class SkokCervena : MonoBehaviour
                     cfigurka3.transform.position = cil.transform.position + new Vector3(0, 0.125f, 0);
                     await Task.Delay(150);
                 }
-                if (HodKostkou.hodnotaKroku3c >= 44 - HodKostkou.domecek && figurka3 == false && HodKostkou.domecek3 == false)
-                {
-                    cfigurka3.transform.position = Skok(44 - HodKostkou.domecek).transform.position + new Vector3(0, 0.125f, 0);
-                    figurka3 = true;
-                    HodKostkou.domecek3 = true;
-                    HodKostkou.domecek = HodKostkou.domecek + 1;
-                }
+            }
+            if (HodKostkou.hodnotaKroku3c >= 44 - domecek && figurka3 == false)
+            {
+                cfigurka3.transform.position = Skok(44 - domecek).transform.position + new Vector3(0, 0.125f, 0);
+                figurka3 = true;
+                domecek = domecek + 1;
             }
         }
     }
@@ -228,23 +228,22 @@ public class SkokCervena : MonoBehaviour
         {
             await Task.Delay(100);
 
-            if (HodKostkou.hodnotaKroku4c >= 1 && HodKostkou.hodnotaKroku4c < 44 && HodKostkou.domecek4 == false)
+            if (HodKostkou.hodnotaKroku4c >= 1 && HodKostkou.hodnotaKroku4c < 43)
             {
                 for (int j = 6; j > 0; j--)
                 {
                     HodKostkou.hodnotaKroku4c = HodKostkou.hodnotaKroku4c + 1;
                     HodKostkou.skok4c = HodKostkou.skok4c + 1;
                     GameObject cil = Skok(HodKostkou.skok4c);
-                    cfigurka4.transform.position = cil.transform.position + new Vector3(0, 0.125f, 0);
+                    cfigurka1.transform.position = cil.transform.position + new Vector3(0, 0.125f, 0);
                     await Task.Delay(150);
                 }
-                if (HodKostkou.hodnotaKroku4c >= 44 - HodKostkou.domecek && figurka4 == false && HodKostkou.domecek4 == false)
-                {
-                    cfigurka4.transform.position = Skok(44 - HodKostkou.domecek).transform.position + new Vector3(0, 0.125f, 0);
-                    figurka4 = true;
-                    HodKostkou.domecek4 = true;
-                    HodKostkou.domecek = HodKostkou.domecek + 1;
-                }
+            }
+            if (HodKostkou.hodnotaKroku2c >= 44 - domecek && figurka2 == false)
+            {
+                cfigurka2.transform.position = Skok(44 - domecek).transform.position + new Vector3(0, 0.125f, 0);
+                figurka2 = true;
+                domecek = domecek + 1;
             }
         }
     }
@@ -261,38 +260,33 @@ public class SkokCervena : MonoBehaviour
 
             if (nasadit == 1)
             {
-                figurka1 = false;
                 HodKostkou.hodnotaKroku1c = 1;
                 HodKostkou.skok1c = 1;
-                HodKostkou.domecek1 = false;
                 cfigurka1.transform.position = Skok(1).transform.position + new Vector3(0, 0.125f, 0);
                 ButtonHodit.SetActive(true);
 
             }
-            if (nasadit == 2 && c1.transform.position + new Vector3(0, 0.125f, 0) != cfigurka1.transform.position)
+            if (nasadit == 2)
             {
-                figurka2 = false;
+                figurka2 = true;
                 HodKostkou.hodnotaKroku2c = 1;
                 HodKostkou.skok2c = 1;
-                HodKostkou.domecek1 = false;
                 cfigurka2.transform.position = Skok(1).transform.position + new Vector3(0, 0.125f, 0);
                 ButtonHodit.SetActive(true);
             }
-            if (nasadit == 3 && c2.transform.position + new Vector3(0, 0.125f, 0) != cfigurka2.transform.position)
+            if (nasadit == 3)
             {
-                figurka3 = false;
+                figurka3 = true;
                 HodKostkou.hodnotaKroku3c = 1;
                 HodKostkou.skok3c = 1;
-                HodKostkou.domecek1 = false;
                 cfigurka3.transform.position = Skok(1).transform.position + new Vector3(0, 0.125f, 0);
                 ButtonHodit.SetActive(true);
             }
-            if (nasadit == 4 && c1.transform.position + new Vector3(0, 0.125f, 0) != cfigurka3.transform.position)
+            if (nasadit == 4)
             {
-                figurka4 = false;
+                figurka4 = true;
                 HodKostkou.hodnotaKroku4c = 1;
                 HodKostkou.skok4c = 1;
-                HodKostkou.domecek1 = false;
                 cfigurka4.transform.position = Skok(1).transform.position + new Vector3(0, 0.125f, 0);
                 ButtonHodit.SetActive(true);
             }
@@ -302,6 +296,7 @@ public class SkokCervena : MonoBehaviour
     {
         if (HodKostkou.barva == 0)
         {
+            HodKostkou.safe = false;
             await Task.Delay(2401);
             if (HodKostkou.cislo == 6)
             {
@@ -314,7 +309,7 @@ public class SkokCervena : MonoBehaviour
     }
     public async void SpustPohyb1(int krok)
     {
-        if (HodKostkou.hodnotaKroku1c >= 1 && HodKostkou.hodnotaKroku1c < 44 && HodKostkou.domecek1 == false)
+        if (HodKostkou.hodnotaKroku1c >= 1 && HodKostkou.hodnotaKroku1c < 43)
         {
             for (int i = HodKostkou.cislo; i > 0; i--)
             {
@@ -324,40 +319,37 @@ public class SkokCervena : MonoBehaviour
                 cfigurka1.transform.position = cil.transform.position + new Vector3(0, 0.125f, 0);
                 await Task.Delay(150);
             }
-            if (HodKostkou.hodnotaKroku1c >= 44 - HodKostkou.domecek && figurka1 == false && HodKostkou.domecek1 == false)
-            {
-                cfigurka1.transform.position = Skok(44 - HodKostkou.domecek).transform.position + new Vector3(0, 0.125f, 0);
-                figurka1 = true;
-                HodKostkou.domecek1 = true;
-                HodKostkou.domecek = HodKostkou.domecek + 1;
-                Debug.Log(HodKostkou.domecek);
-            }
+        }
+        if (HodKostkou.hodnotaKroku1c >= 44 - domecek && figurka1 == false)
+        {
+            cfigurka1.transform.position = Skok(44).transform.position + new Vector3(0, 0.125f, 0);
+            figurka1 = true;
+            domecek = domecek + 1;
         }
     }
     public async void SpustPohyb2(int krok)
     {
-        if (HodKostkou.hodnotaKroku2c >= 1 && HodKostkou.hodnotaKroku2c < 44 && HodKostkou.domecek2 == false)
+        if (HodKostkou.hodnotaKroku2c >= 1 && HodKostkou.hodnotaKroku2c < 43)
         {
             for (int i = HodKostkou.cislo; i > 0; i--)
             {
-                HodKostkou.hodnotaKroku2c = HodKostkou.hodnotaKroku2c + 1;
+                HodKostkou.hodnotaKroku1c = HodKostkou.hodnotaKroku2c + 1;
                 HodKostkou.skok2c = HodKostkou.skok2c + 1;
                 GameObject cil = Skok(HodKostkou.skok2c);
                 cfigurka2.transform.position = cil.transform.position + new Vector3(0, 0.125f, 0);
                 await Task.Delay(150);
             }
-            if (HodKostkou.hodnotaKroku2c >= 44 - HodKostkou.domecek && figurka2 == false && HodKostkou.domecek2 == false)
-            {
-                cfigurka2.transform.position = Skok(44 - HodKostkou.domecek).transform.position + new Vector3(0, 0.125f, 0);
-                figurka2 = true;
-                HodKostkou.domecek2 = true;
-                HodKostkou.domecek = HodKostkou.domecek + 1;
-            }
+        }
+        if (HodKostkou.hodnotaKroku2c >= 44 - domecek && figurka2 == false)
+        {
+            cfigurka2.transform.position = Skok(44 - domecek).transform.position + new Vector3(0, 0.125f, 0);
+            figurka2 = true;
+            domecek = domecek + 1;
         }
     }
     public async void SpustPohyb3(int krok)
     {
-        if (HodKostkou.hodnotaKroku3c >= 1 && HodKostkou.hodnotaKroku3c < 44 && HodKostkou.domecek3 == false)
+        if (HodKostkou.hodnotaKroku3c >= 1 && HodKostkou.hodnotaKroku3c < 43)
         {
             for (int i = HodKostkou.cislo; i > 0; i--)
             {
@@ -367,35 +359,32 @@ public class SkokCervena : MonoBehaviour
                 cfigurka3.transform.position = cil.transform.position + new Vector3(0, 0.125f, 0);
                 await Task.Delay(150);
             }
-            if (HodKostkou.hodnotaKroku3c >= 44 - HodKostkou.domecek && figurka3 == false && HodKostkou.domecek3 == false)
-            {
-                cfigurka3.transform.position = Skok(44 - HodKostkou.domecek).transform.position + new Vector3(0, 0.125f, 0);
-                figurka3 = true;
-                HodKostkou.domecek3 = true;
-                HodKostkou.domecek = HodKostkou.domecek + 1;
-            }
+        }
+        if (HodKostkou.hodnotaKroku3c >= 44 - domecek && figurka3 == false)
+        {
+            cfigurka3.transform.position = Skok(44 - domecek).transform.position + new Vector3(0, 0.125f, 0);
+            figurka3  = true;
+            domecek = domecek + 1;
         }
     }
     public async void SpustPohyb4(int krok)
     {
-        if (HodKostkou.hodnotaKroku4c >= 1 && HodKostkou.hodnotaKroku4c < 44 && HodKostkou.domecek4 == false)
+        if (HodKostkou.hodnotaKroku3c >= 1 && HodKostkou.hodnotaKroku3c < 43)
         {
-            HodKostkou.safe = false;
             for (int i = HodKostkou.cislo; i > 0; i--)
             {
-                HodKostkou.hodnotaKroku4c = HodKostkou.hodnotaKroku4c + 1;
-                HodKostkou.skok4c = HodKostkou.skok4c + 1;
-                GameObject cil = Skok(HodKostkou.skok4c);
+                HodKostkou.hodnotaKroku3c = HodKostkou.hodnotaKroku3c + 1;
+                HodKostkou.skok3c = HodKostkou.skok3c + 1;
+                GameObject cil = Skok(HodKostkou.skok3c);
                 cfigurka4.transform.position = cil.transform.position + new Vector3(0, 0.125f, 0);
                 await Task.Delay(150);
             }
-            if (HodKostkou.hodnotaKroku4c >= 44 - HodKostkou.domecek && figurka4 == false && HodKostkou.domecek4 == false)
-            {
-                cfigurka4.transform.position = Skok(44 - HodKostkou.domecek).transform.position + new Vector3(0, 0.125f, 0);
-                figurka4 = true;
-                HodKostkou.domecek4 = true;
-                HodKostkou.domecek = HodKostkou.domecek + 1;
-            }
+        }
+        if (HodKostkou.hodnotaKroku3c >= 44 - domecek && figurka4 == false)
+        {
+            cfigurka4.transform.position = Skok(44).transform.position + new Vector3(0, 0.125f, 0);
+            figurka4 = true;
+            domecek = domecek + 1;
         }
     }
 
@@ -419,12 +408,12 @@ public class SkokCervena : MonoBehaviour
                         if (HodKostkou.cislo != 6)
                         {
                             SpustPohyb1(HodKostkou.cislo);
-                            //HodKostkou.safe = false;
+                            HodKostkou.safe = false;
                         }
                         if (HodKostkou.cislo == 6)
                         {
                             Ne1();
-                            //HodKostkou.safe = false;
+                            HodKostkou.safe = false;
                         }
                     }
                     if (trefenyObjekt == cfigurka2 && HodKostkou.safe == true)
@@ -433,12 +422,12 @@ public class SkokCervena : MonoBehaviour
                         if (HodKostkou.cislo != 6)
                         {
                             SpustPohyb2(HodKostkou.cislo);
-                            //HodKostkou.safe = false;
+                            HodKostkou.safe = false;
                         }
                         if (HodKostkou.cislo == 6)
                         {
                             Ne2();
-                            //HodKostkou.safe = false;
+                            HodKostkou.safe = false;
                         }
                     }
                     if (trefenyObjekt == cfigurka3 && HodKostkou.safe == true)
@@ -447,12 +436,12 @@ public class SkokCervena : MonoBehaviour
                         if (HodKostkou.cislo != 6)
                         {
                             SpustPohyb3(HodKostkou.cislo);
-                            //HodKostkou.safe = false;
+                            HodKostkou.safe = false;
                         }
                         if (HodKostkou.cislo == 6)
                         {
                             Ne3();
-                            //HodKostkou.safe = false;
+                            HodKostkou.safe = false;
                         }
                     }
                     if (trefenyObjekt == cfigurka4 && HodKostkou.safe == true)
@@ -461,12 +450,12 @@ public class SkokCervena : MonoBehaviour
                         if (HodKostkou.cislo != 6)
                         {
                             SpustPohyb4(HodKostkou.cislo);
-                            //HodKostkou.safe = false;
+                            HodKostkou.safe = false;
                         }
                         if (HodKostkou.cislo == 6)
                         {
                             Ne4();
-                            //HodKostkou.safe = false;
+                            HodKostkou.safe = false;
                         }
                     }
                 }

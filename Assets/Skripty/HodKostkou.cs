@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class HodKostkou : MonoBehaviour
 {
-    //Pøedìlat button na hod (viditelnost)
     public GameObject kostka1;
     public GameObject kostka2;
     public GameObject kostka3;
@@ -26,11 +25,6 @@ public class HodKostkou : MonoBehaviour
     public static int skok3c = 1;
     public static int skok4c = 1;
     public static bool safe = false;
-    public static bool domecek1 = false;
-    public static bool domecek2 = false;
-    public static bool domecek3 = false;
-    public static bool domecek4 = false;
-    public static int domecek = 0;
     int cervenaHod = 0;
 
     public async void Hod()
@@ -125,11 +119,10 @@ public class HodKostkou : MonoBehaviour
             if (cislo == 6)
             {
                 kostka6.SetActive(true);
-                HodKostkou.safe = false;
                 await Task.Delay(200);
             }
 
-            if (domecek1 == false || domecek2 == false || domecek3 == false || domecek4 == false)
+            if (SkokCervena.nasadit == 0)
             {
                 ButtonHodit.SetActive(true);
             }
